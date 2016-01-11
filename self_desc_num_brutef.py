@@ -5,7 +5,7 @@ a maths puzzle - The self descriptive number
 Input is hardcoded.
 """
 
-#author :Nikoaly Manolov
+#author :Nikolay Manolov
 #license:GNU GPL Version 3
 #==================================================
 
