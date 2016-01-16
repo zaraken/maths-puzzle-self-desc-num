@@ -31,19 +31,23 @@ def increment(number, digit, budget, base, check_all):
     return False
 
 def getCount(number,base):
-    cnt_num = list()
+    #cnt_num = list()
+    #for i in range(base-1):
+    #    cnt = number.count(i)
+    #    if (i == 0): cnt+=1 # +1 for last zero
+    #    cnt_num.append(cnt)
+    cnt_num = [1] + [0 for i in range(base-2)]
     for i in range(base-1):
-        cnt = number.count(i)
-        if (i == 0): cnt+=1 # +1 for last zero
-        cnt_num.append(cnt)
+        cnt_num[number[i]] += 1
     return cnt_num
 
 def check(number, base):
-    if sum(number) > base:
-        return False
-    for i in range(base-1):
+    #if sum(number) > base:
+    #    return False
+    cnt = 1 + number.count(0) # +1 for last zero
+    if number[0] != cnt: return False
+    for i in range(1, base-1):
         cnt = number.count(i)
-        if (i == 0): cnt+=1 # +1 for last zero
         if number[i] != cnt:
             return False
     return True
@@ -57,7 +61,7 @@ def test(base):
     print '       time -> ',
 
 if __name__ == '__main__':
-    if not check([3,2,1,1,0,0], 7):
+    if not check(getCount([3,2,1,1,0,0], 7),7):
         print "Sanity check failed!"
     else:
         import timeit
